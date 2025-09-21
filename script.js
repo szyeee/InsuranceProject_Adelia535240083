@@ -375,58 +375,116 @@ function renderBuy(id){
     return;
   }
 
-  /* VEHICLE */
-  if(p.type === 'vehicle'){
-    app.innerHTML = `
-      <section class="card" style="max-width:760px;margin:0 auto">
-        <h2>Beli ${escapeHtml(p.title)}</h2>
-        <div class="small">${escapeHtml(p.short)}</div><hr>
-        <div class="field"><label>Merk</label><input id="veh_brand" class="input"></div>
-        <div class="field"><label>Model</label><input id="veh_model" class="input"></div>
-        <div class="field"><label>Tahun pembuatan</label><input id="veh_year" type="number" class="input" placeholder="2019"></div>
-        <div class="field"><label>Harga kendaraan (Rp)</label><input id="veh_price" type="number" class="input"></div>
-        <div class="field"><label>Nomor plat</label><input id="veh_plate" class="input"></div>
-        <div class="field"><label>Nomor mesin</label><input id="veh_machine" class="input"></div>
-        <div class="field"><label>Nomor rangka</label><input id="veh_chassis" class="input"></div>
-        <div class="field"><label>Nama pemilik</label><input id="veh_owner" class="input" value="${escapeHtml(user.name)}"></div>
-        <div class="field"><label>Upload foto (minimal 1 foto)</label><input id="veh_photos" type="file" accept="image/*" multiple class="input"></div>
-        <div style="display:flex;gap:8px;margin-top:12px"><button class="btn btn-ghost" onclick="routeTo('detail','${p.id}')">Batal</button>
-        <button id="veh_calc" class="btn btn-primary">Hitung Premi</button></div>
-        <div id="veh_result" style="margin-top:12px"></div>
-      </section>
-    `;
-    document.getElementById('veh_calc').addEventListener('click', ()=>{
-      const brand = $('veh_brand').value.trim();
-      const model = $('veh_model').value.trim();
-      const year = parseInt($('veh_year').value);
-      const price = Number($('veh_price').value);
-      const plate = $('veh_plate').value.trim();
-      const machine = $('veh_machine').value.trim();
-      const chassis = $('veh_chassis').value.trim();
-      const owner = $('veh_owner').value.trim();
-      const photos = $('veh_photos').files;
-      // validasi: minimal 1 foto agar tak selalu gagal
-      if(!brand||!model||!year||!price||!plate||!machine||!chassis||!owner){ showToast('Lengkapi semua field'); return; }
-      if(isNaN(year) || isNaN(price) || price <= 0){ showToast('Tahun dan harga harus angka yang valid (>0)'); return; }
-      if(!photos || photos.length < 1){ showToast('Upload minimal 1 foto'); return; }
-      const age = nowYear() - year;
-      let premiPerYear = 0;
-      if(age >=0 && age <=3) premiPerYear = 0.025 * price;
-      else if(age >3 && age <=5){
-        if(price < 200000000) premiPerYear = 0.04 * price;
-        else premiPerYear = 0.03 * price;
-      } else if(age > 5) premiPerYear = 0.05 * price;
-      premiPerYear = Math.round(premiPerYear);
+/* VEHICLE */
+if (p.type === 'vehicle') {
+  app.innerHTML = `
+    <section class="card" style="max-width:760px;margin:0 auto">
+      <h2>Beli ${escapeHtml(p.title)}</h2>
+      <div class="small">${escapeHtml(p.short)}</div><hr>
+      <div class="field"><label>Merk</label><input id="veh_brand" class="input"></div>
+      <div class="field"><label>Model</label><input id="veh_model" class="input"></div>
+      <div class="field"><label>Tahun pembuatan</label><input id="veh_year" type="number" class="input" placeholder="2019"></div>
+      <div class="field"><label>Harga kendaraan (Rp)</label><input id="veh_price" type="number" class="input"></div>
+      <div class="field"><label>Nomor plat</label><input id="veh_plate" class="input"></div>
+      <div class="field"><label>Nomor mesin</label><input id="veh_machine" class="input"></div>
+      <div class="field"><label>Nomor rangka</label><input id="veh_chassis" class="input"></div>
+      <div class="field"><label>Nama pemilik</label><input id="veh_owner" class="input" value="${escapeHtml(user.name)}"></div>
 
-      const pending = { id:'ORD'+Date.now(), productId:p.id, productTitle:p.title+' - '+brand+' '+model, type:p.type, date:new Date().toISOString(), premium:premiPerYear, premiumPeriod:'Per tahun', buyer:user.email, status:'Belum Lunas' };
-      sessionStorage.setItem('pendingOrder', JSON.stringify(pending));
-      routeTo('checkout');
+      <div class="field">
+        <label>Upload Foto Kendaraan (6 gambar: depan, belakang, kiri, kanan, interior, STNK)</label>
+        <input type="file" id="veh_photos" accept="image/*" multiple>
+        <small>Minimal 6 foto. Maksimal 10MB tiap foto.</small>
+        <div id="veh_preview" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px"></div>
+      </div>
+
+      <div style="display:flex;gap:8px;margin-top:12px">
+        <button class="btn btn-ghost" onclick="routeTo('detail','${p.id}')">Batal</button>
+        <button id="veh_calc" class="btn btn-primary">Hitung Premi</button>
+      </div>
+    </section>
+  `;
+
+  const vehPhotosInput = $('veh_photos');
+  const preview = $('veh_preview');
+
+  // Preview foto ketika file dipilih
+  vehPhotosInput.addEventListener('change', () => {
+    preview.innerHTML = '';
+    const files = [...vehPhotosInput.files];
+    if (files.length < 6) {
+      showToast('Minimal 6 foto kendaraan (depan, belakang, kiri, kanan, interior, STNK)');
       return;
+    }
+    files.forEach(file => {
+      const img = document.createElement('img');
+      img.style.width = '80px';
+      img.style.height = '60px';
+      img.style.objectFit = 'cover';
+      img.style.borderRadius = '6px';
+      img.src = URL.createObjectURL(file);
+      preview.appendChild(img);
     });
-    return;
-  }
+  });
 
-  /* HEALTH - per your formula */
+  // Hitung premi
+  $('veh_calc').addEventListener('click', () => {
+    const brand = $('veh_brand').value.trim();
+    const model = $('veh_model').value.trim();
+    const year = parseInt($('veh_year').value);
+    const price = Number($('veh_price').value);
+    const plate = $('veh_plate').value.trim();
+    const machine = $('veh_machine').value.trim();
+    const chassis = $('veh_chassis').value.trim();
+    const owner = $('veh_owner').value.trim();
+    const photos = vehPhotosInput.files;
+
+    if (!brand || !model || !year || !price || !plate || !machine || !chassis || !owner) {
+      showToast('Lengkapi semua field');
+      return;
+    }
+    if (isNaN(year) || isNaN(price) || price <= 0) {
+      showToast('Tahun dan harga harus angka yang valid (>0)');
+      return;
+    }
+    if (!photos || photos.length < 6) {
+      showToast('Unggah minimal 6 foto kendaraan');
+      return;
+    }
+
+    // Hitung premi
+    const age = nowYear() - year;
+    let premiPerYear = 0;
+    if (age >= 0 && age <= 3) {
+      premiPerYear = 0.025 * price;
+    } else if (age > 3 && age <= 5) {
+      premiPerYear = price < 200000000 ? 0.04 * price : 0.03 * price;
+    } else if (age > 5) {
+      premiPerYear = 0.05 * price;
+    }
+    premiPerYear = Math.round(premiPerYear);
+
+    // Simpan order sementara
+    const pending = {
+      id: 'ORD' + Date.now(),
+      productId: p.id,
+      productTitle: `${p.title} - ${brand} ${model}`,
+      type: p.type,
+      date: new Date().toISOString(),
+      premium: premiPerYear,
+      premiumPeriod: 'Per tahun',
+      buyer: user.email,
+      photoCount: photos.length,
+      status: 'Belum Lunas'
+    };
+    sessionStorage.setItem('pendingOrder', JSON.stringify(pending));
+    routeTo('checkout');
+  });
+
+  return;
+}
+
+
+  /* HEALTH */
   if(p.type === 'health'){
     app.innerHTML = `
       <section class="card" style="max-width:760px;margin:0 auto">
