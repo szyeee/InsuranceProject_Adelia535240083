@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Poly Insurance's</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand" onclick="routeTo('home')">
+      <svg viewBox="0 0 120 120" width="44" height="44" class="logo-svg" aria-hidden="true">
+        <defs><linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#ffb86b"/><stop offset="1" stop-color="#ff6bcb"/></linearGradient></defs>
+        <rect rx="18" width="100" height="100" x="10" y="10" fill="url(#g1)"/>
+        <path d="M35 60 q15 -30 50 0" stroke="#4b1e6b" stroke-width="6" fill="none" stroke-linecap="round"/>
+      </svg>
+      <div class="brand-text"><div class="title">Poly Insurance's</div><div class="tag">Personal Life Changer</div></div>
+    </div>
+
+    <nav class="nav">
+      <button class="nav-link" onclick="routeTo('home')">Home</button>
+      <button class="nav-link" onclick="routeTo('products')">Products</button>
+      <button class="nav-link" onclick="routeTo('history')">Histori</button>
+      <span id="user-area" class="user-area"></span>
+    </nav>
+  </header>
+
+  <main id="app" class="fade"></main>
+
+  <footer class="footer">
+    <div>Poly Insurance's Life Changer</div>
+    <small class="muted">Make Your Life Better</small>
+  </footer>
+
+  <div id="toast" class="toast" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
