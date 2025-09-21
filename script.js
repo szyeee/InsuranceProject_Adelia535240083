@@ -39,44 +39,48 @@ const TYPES = [
 
 const PRODUCTS = {
   family: [
-    { id:'F1', type:'family', title:'FamilyCare Basic', short:'Perlindungan keluarga dasar (orang tua + anak)', price:1500000, image:'img/Keluarga.jpeg' },
+    { id:'F1', type:'family', title:'FamilyProtect Elite', short:'Perlindungan lengkap untuk keluarga besar', price:4500000, image:'img/Keluarga.jpeg' },
     { id:'F2', type:'family', title:'FamilyCare Plus', short:'Perlindungan lebih luas untuk pasangan & anak', price:3000000, image:'img/Keluarga.jpeg' },
-    { id:'F3', type:'family', title:'FamilyProtect Elite', short:'Perlindungan lengkap untuk keluarga besar', price:4500000, image:'img/Keluarga.jpeg' }
+    { id:'F3', type:'family', title:'FamilyCare Basic', short:'Perlindungan keluarga dasar (orang tua + anak)', price:1500000, image:'img/Keluarga.jpeg' }
   ],
   vehicle: [
-    { id:'V1', type:'vehicle', title:'Auto Basic', short:'Third-party & partial cover', price:0, image:'img/kendaraan.jpg' },
-    { id:'V2', type:'vehicle', title:'Auto AllRisk', short:'All-risk untuk mobil pribadi', price:0, image:'img/kendaraan.jpg' },
-    { id:'V3', type:'vehicle', title:'MotorSafe', short:'Perlindungan untuk motor', price:0, image:'img/kendaraan.jpg' }
+    // beri harga contoh realistis agar listing menampilkan perbedaan & perhitungan tidak nol
+    { id:'V1', type:'vehicle', title:'Auto AllRisk', short:'All-risk untuk mobil pribadi', price:300000000, image:'img/kendaraan.jpg' },
+    { id:'V2', type:'vehicle', title:'Auto Basic', short:'Third-party & partial cover', price:150000000, image:'img/kendaraan.jpg' },
+    { id:'V3', type:'vehicle', title:'MotorSafe', short:'Perlindungan untuk motor', price:15000000, image:'img/kendaraan.jpg' }
   ],
   health: [
-    { id:'H1', type:'health', title:'Health Silver', short:'Rawat inap dasar', price:2000000, image:'img/kesehatan.jpg' },
-    { id:'H2', type:'health', title:'Health Gold', short:'Cakupan lebih luas + check-up', price:4000000, image:'img/kesehatan.jpg' },
-    { id:'H3', type:'health', title:'Health Family', short:'Perlindungan keluarga untuk rawat inap', price:3500000, image:'img/kesehatan.jpg' }
+    { id:'H1', type:'health', title:'Health Gold', short:'Cakupan lebih luas + check-up', price:4000000, image:'img/kesehatan.jpg' },
+    { id:'H2', type:'health', title:'Health Family', short:'Perlindungan keluarga untuk rawat inap', price:3500000, image:'img/kesehatan.jpg' },
+    { id:'H3', type:'health', title:'Health Silver', short:'Rawat inap dasar', price:2000000, image:'img/kesehatan.jpg' }
   ],
   life: [
-    { id:'L1', type:'life', title:'Life 1M', short:'Santunan 1.000.000.000', price:1000000000, image:'img/jiwa.jpeg' },
-    { id:'L2', type:'life', title:'Life 3M', short:'Santunan 3.500.000.000', price:3500000000, image:'img/jiwa.jpeg' },
-    { id:'L3', type:'life', title:'Life Term 2M', short:'Santunan 2.000.000.000', price:2000000000, image:'img/jiwa.jpeg' }
+    // jadi 5 produk tetap (satu produk = satu harga)
+    { id:'L1', type:'life', title:'Life 1M', short:'Santunan Rp1.000.000.000', price:1000000000, image:'img/jiwa.jpeg' },
+    { id:'L2', type:'life', title:'Life 2M', short:'Santunan Rp2.000.000.000', price:2000000000, image:'img/jiwa.jpeg' },
+    { id:'L3', type:'life', title:'Life 3.5M', short:'Santunan Rp3.500.000.000', price:3500000000, image:'img/jiwa.jpeg' },
+    { id:'L4', type:'life', title:'Life 5M', short:'Santunan Rp5.000.000.000', price:5000000000, image:'img/jiwa.jpeg' },
+    { id:'L5', type:'life', title:'Life 10M', short:'Santunan Rp10.000.000.000', price:10000000000, image:'img/jiwa.jpeg' }
   ],
   accident: [
-    { id:'A1', type:'accident', title:'Accident Basic', short:'Santunan kecelakaan harian & cacat', price:500000, image:'img/kecelakaan.jpeg' },
-    { id:'A2', type:'accident', title:'Accident Plus', short:'Santunan kecelakaan & rawat inap', price:1200000, image:'img/kecelakaan.jpeg' },
-    { id:'A3', type:'accident', title:'Accident Family', short:'Perlindungan kecelakaan untuk keluarga', price:900000, image:'img/kecelakaan.jpeg' }
+    { id:'A1', type:'accident', title:'Accident Plus', short:'Santunan kecelakaan & rawat inap', price:1200000, image:'img/kecelakaan.jpeg' },
+    { id:'A2', type:'accident', title:'Accident Family', short:'Perlindungan kecelakaan untuk keluarga', price:900000, image:'img/kecelakaan.jpeg' },
+    { id:'A3', type:'accident', title:'Accident Basic', short:'Santunan kecelakaan harian & cacat', price:500000, image:'img/kecelakaan.jpeg' }
   ],
   travel: [
-    { id:'T1', type:'travel', title:'Travel Lite', short:'Perlindungan pembatalan & medis perjalanan', price:250000, image:'img/travel.jpg' },
+    { id:'T1', type:'travel', title:'Travel Family', short:'Perlindungan untuk keluarga saat bepergian', price:600000, image:'img/travel.jpg' },
     { id:'T2', type:'travel', title:'Travel Pro', short:'Perlindungan perjalanan internasional', price:450000, image:'img/travel.jpg' },
-    { id:'T3', type:'travel', title:'Travel Family', short:'Perlindungan untuk keluarga saat bepergian', price:600000, image:'img/travel.jpg' }
+    { id:'T3', type:'travel', title:'Travel Lite', short:'Perlindungan pembatalan & medis perjalanan', price:250000, image:'img/travel.jpg' }
   ],
   property: [
-    { id:'P1', type:'property', title:'HomeSafe', short:'Perlindungan kebakaran & bencana', price:800000, image:'img/properti.jpg' },
+    { id:'P1', type:'property', title:'Property Elite', short:'Perlindungan lengkap untuk properti besar', price:2500000, image:'img/properti.jpg' },
     { id:'P2', type:'property', title:'Property Plus', short:'Tambahan perlindungan pencurian & liability', price:1500000, image:'img/properti.jpg' },
-    { id:'P3', type:'property', title:'Property Elite', short:'Perlindungan lengkap untuk properti besar', price:2500000, image:'img/properti.jpg' }
+    { id:'P3', type:'property', title:'HomeSafe', short:'Perlindungan kebakaran & bencana', price:800000, image:'img/properti.jpg' }
   ],
   business: [
-    { id:'B1', type:'business', title:'SME Protect', short:'Perlindungan aset & kewajiban bisnis kecil', price:2000000, image:'img/bisnis.jpg' },
-    { id:'B2', type:'business', title:'Enterprise Shield', short:'Perlindungan lengkap untuk usaha menengah', price:5000000, image:'img/bisnis.jpg' },
-    { id:'B3', type:'business', title:'Business Liability', short:'Perlindungan tanggung jawab hukum bisnis', price:3000000, image:'img/bisnis.jpg' }
+    { id:'B1', type:'business', title:'Enterprise Shield', short:'Perlindungan lengkap untuk usaha menengah', price:5000000, image:'img/bisnis.jpg' },
+    { id:'B2', type:'business', title:'Business Liability', short:'Perlindungan tanggung jawab hukum bisnis', price:3000000, image:'img/bisnis.jpg' },
+    { id:'B3', type:'business', title:'SME Protect', short:'Perlindungan aset & kewajiban bisnis kecil', price:2000000, image:'img/bisnis.jpg' }
   ]
 };
 
@@ -95,7 +99,7 @@ function saveOrder(o){
   localStorage.setItem('orders', JSON.stringify(arr));
 }
 
-/* ensure  */
+/* ensure demo user */
 if(!findUser('demo@example.com')) addUser({email:'demo@example.com', password:'password123', name:'Demo User', phone:'081234567890'});
 
 /* UI & Router */
@@ -121,7 +125,6 @@ function render(view,param){
   switch(view){
     case 'login': return renderLogin();
     case 'signup': return renderSignup();
-    case 'jiwa':renderAsuransiJiwa();break;
     case 'products': return renderProducts();
     case 'type': return renderType(param);
     case 'detail': return renderDetail(param);
@@ -140,7 +143,8 @@ function renderHome(){
   const user = getCurrent();
   const featured = [];
   for(let i=0;i<TYPES.length && featured.length<3;i++){
-    const arr = PRODUCTS[TYPES[i].id] || [];
+    // pilih produk paling mahal di tiap type
+    const arr = (PRODUCTS[TYPES[i].id] || []).slice().sort((a,b)=> (b.price||0)-(a.price||0));
     if(arr.length>0) featured.push(arr[0]);
   }
 
@@ -167,7 +171,7 @@ function renderHome(){
             <img src="${p.image||'img/default.png'}" alt="${p.title}" style="height:120px;object-fit:contain">
             <h3>${escapeHtml(p.title)}</h3>
             <div class="small">${escapeHtml(p.short)}</div>
-            <div style="margin-top:8px"><strong>${p.price?formatIDR(p.price):'Harga berdasarkan input'}</strong></div>
+            <div style="margin-top:8px"><strong>${formatIDR(p.price||0)}</strong></div>
             <div style="margin-top:8px">
               <button class="btn btn-ghost" onclick="routeTo('detail','${p.id}')">Detail</button>
               <button class="btn btn-primary" onclick="routeTo('buy','${p.id}')">Beli</button>
@@ -179,7 +183,6 @@ function renderHome(){
     </section>
   `;
 
-  // small popups
   setTimeout(()=>{ showWelcomePopup(); showPromoPopup(); }, 200);
 }
 
@@ -255,18 +258,20 @@ function renderProducts(){
 function renderType(typeId){
   const type = TYPES.find(t=>t.id===typeId);
   if(!type) return routeTo('products');
-  const prods = PRODUCTS[typeId] || [];
+  // urutkan produk berdasarkan harga desc (mahal -> murah)
+  const prods = (PRODUCTS[typeId] || []).slice().sort((a,b)=> (b.price||0) - (a.price||0));
   document.title = "Poly Insurance's";
   app.innerHTML = `
     <section>
       <h2>${type.icon} ${type.title}</h2>
-      <p class="small">Produk tersedia di kategori ini.</p>
+      <p class="small">Produk tersedia di kategori ini (diurutkan dari harga tertinggi).</p>
       <div class="grid">
         ${prods.map(p=>`
           <div class="card">
             <img src="${p.image||'img/default.png'}" alt="${p.title}" style="height:120px;object-fit:contain">
             <h3>${escapeHtml(p.title)}</h3>
             <div class="small">${escapeHtml(p.short)}</div>
+            <div style="margin-top:8px"><strong>${p.price?formatIDR(p.price):'Harga berdasarkan input'}</strong></div>
             <div style="margin-top:8px"><button class="btn btn-ghost" onclick="routeTo('detail','${p.id}')">Detail</button>
             <button class="btn btn-primary" onclick="routeTo('buy','${p.id}')">Beli</button></div>
           </div>
@@ -288,7 +293,7 @@ function findProductById(id){
 function renderDetail(id){
   const p = findProductById(id);
   if(!p) return routeTo('products');
-  document.title = "Poly Insurance's";
+  document.title = p.title + " — Poly Insurance";
   app.innerHTML = `
     <section class="card" style="max-width:900px;margin:0 auto">
       <div style="display:flex;gap:16px;align-items:flex-start">
@@ -296,7 +301,7 @@ function renderDetail(id){
         <div style="flex:1">
           <h2>${escapeHtml(p.title)}</h2>
           <div class="small">${escapeHtml(p.short)}</div>
-          <div style="margin-top:8px"><strong>Harga contoh: </strong> ${p.price?formatIDR(p.price):'Harga tergantung input'} </div>
+          <div style="margin-top:8px"><strong>Harga: </strong> ${p.price?formatIDR(p.price):'Harga berdasarkan input'} </div>
           <p style="margin-top:12px">Gunakan tombol Beli untuk mengisi data sesuai jenis asuransi dan menghitung premi.</p>
           <div style="margin-top:12px">
             <button class="btn btn-primary" onclick="routeTo('buy','${p.id}')">Beli</button>
@@ -308,7 +313,7 @@ function renderDetail(id){
   `;
 }
 
-/* checkout button */
+/* checkout button helper (kept for potential use) */
 function renderCheckoutAndAttach(premium, label, onCheckout){
   const uid = 'do_checkout_' + Date.now() + '_' + Math.floor(Math.random()*1000);
   const html = `<div class="card"><strong>Hasil Perhitungan</strong>
@@ -334,9 +339,9 @@ function renderBuy(id){
   if(!p) return routeTo('products');
   const user = getCurrent();
   if(!user){ showToast('Silakan login terlebih dahulu'); return routeTo('login'); }
-  document.title = "Poly Insurance's";
+  document.title = 'Beli — ' + p.title;
 
-  // FAMILY
+  /* FAMILY */
   if(p.type === 'family'){
     app.innerHTML = `
       <section class="card" style="max-width:760px;margin:0 auto">
@@ -362,7 +367,7 @@ function renderBuy(id){
       const base = 500000;
       const premi = Math.round(base + (count-1)*0.5*base + (sum/1000000)*10000);
 
-      const pending = { id:'ORD'+Date.now(), productId:p.id, productTitle:p.title, type:p.type, date:new Date().toISOString(), premium:premi, buyer:user.email, status:'Belum Lunas' };
+      const pending = { id:'ORD'+Date.now(), productId:p.id, productTitle:p.title, type:p.type, date:new Date().toISOString(), premium:premi, premiumPeriod:'Per tahun', buyer:user.email, status:'Belum Lunas' };
       sessionStorage.setItem('pendingOrder', JSON.stringify(pending));
       routeTo('checkout');
       return;
@@ -370,7 +375,7 @@ function renderBuy(id){
     return;
   }
 
-  // VEHICLE
+  /* VEHICLE */
   if(p.type === 'vehicle'){
     app.innerHTML = `
       <section class="card" style="max-width:760px;margin:0 auto">
@@ -384,7 +389,7 @@ function renderBuy(id){
         <div class="field"><label>Nomor mesin</label><input id="veh_machine" class="input"></div>
         <div class="field"><label>Nomor rangka</label><input id="veh_chassis" class="input"></div>
         <div class="field"><label>Nama pemilik</label><input id="veh_owner" class="input" value="${escapeHtml(user.name)}"></div>
-        <div class="field"><label>Upload foto (depan, belakang, kiri, kanan, dashboard, mesin)</label><input id="veh_photos" type="file" accept="image/*" multiple class="input"></div>
+        <div class="field"><label>Upload foto (minimal 1 foto)</label><input id="veh_photos" type="file" accept="image/*" multiple class="input"></div>
         <div style="display:flex;gap:8px;margin-top:12px"><button class="btn btn-ghost" onclick="routeTo('detail','${p.id}')">Batal</button>
         <button id="veh_calc" class="btn btn-primary">Hitung Premi</button></div>
         <div id="veh_result" style="margin-top:12px"></div>
@@ -400,9 +405,10 @@ function renderBuy(id){
       const chassis = $('veh_chassis').value.trim();
       const owner = $('veh_owner').value.trim();
       const photos = $('veh_photos').files;
+      // validasi: minimal 1 foto agar tak selalu gagal
       if(!brand||!model||!year||!price||!plate||!machine||!chassis||!owner){ showToast('Lengkapi semua field'); return; }
-      if(isNaN(year) || isNaN(price)){ showToast('Tahun dan harga harus angka yang valid'); return; }
-      if(!photos || photos.length < 6){ showToast('Upload minimal 6 foto'); return; }
+      if(isNaN(year) || isNaN(price) || price <= 0){ showToast('Tahun dan harga harus angka yang valid (>0)'); return; }
+      if(!photos || photos.length < 1){ showToast('Upload minimal 1 foto'); return; }
       const age = nowYear() - year;
       let premiPerYear = 0;
       if(age >=0 && age <=3) premiPerYear = 0.025 * price;
@@ -412,7 +418,7 @@ function renderBuy(id){
       } else if(age > 5) premiPerYear = 0.05 * price;
       premiPerYear = Math.round(premiPerYear);
 
-      const pending = { id:'ORD'+Date.now(), productId:p.id, productTitle:p.title+' - '+brand+' '+model, type:p.type, date:new Date().toISOString(), premium:premiPerYear, buyer:user.email, status:'Belum Lunas' };
+      const pending = { id:'ORD'+Date.now(), productId:p.id, productTitle:p.title+' - '+brand+' '+model, type:p.type, date:new Date().toISOString(), premium:premiPerYear, premiumPeriod:'Per tahun', buyer:user.email, status:'Belum Lunas' };
       sessionStorage.setItem('pendingOrder', JSON.stringify(pending));
       routeTo('checkout');
       return;
@@ -420,7 +426,7 @@ function renderBuy(id){
     return;
   }
 
-  // HEALTH
+  /* HEALTH - per your formula */
   if(p.type === 'health'){
     app.innerHTML = `
       <section class="card" style="max-width:760px;margin:0 auto">
@@ -441,20 +447,24 @@ function renderBuy(id){
       const name = $('hl_name').value.trim();
       const dob = $('hl_dob').value;
       const job = $('hl_job').value.trim();
-      const k1 = Number($('hl_smoke').value);
-      const k2 = Number($('hl_hyper').value);
-      const k3 = Number($('hl_diab').value);
+      const k1 = Number($('hl_smoke').value); // merokok
+      const k2 = Number($('hl_hyper').value); // hipertensi
+      const k3 = Number($('hl_diab').value); // diabetes
       if(!name||!dob||!job){ showToast('Lengkapi semua field'); return; }
       const u = calcAge(dob);
+
+      // faktor m berdasarkan umur u
       let m = 0.1;
       if(u <= 20) m = 0.1;
       else if(u <= 35) m = 0.2;
       else if(u <= 50) m = 0.25;
       else m = 0.4;
-      const P = 2000000;
-      const premi = Math.round(P + (m*P) + (k1*0.5*P) + (k2*0.4*P) + (k3*0.5*P));
 
-      const pending = { id:'ORD'+Date.now(), productId:p.id, productTitle:p.title, type:p.type, date:new Date().toISOString(), premium:premi, buyer:user.email, status:'Belum Lunas' };
+      const P = 2000000; // premi dasar per tahun
+      // Rumus: P + (m*P) + (k1*0.5P) + (k2*0.4P) + (k3*0.5P)
+      const premi = Math.round(P + (m * P) + (k1 * 0.5 * P) + (k2 * 0.4 * P) + (k3 * 0.5 * P));
+
+      const pending = { id:'ORD'+Date.now(), productId:p.id, productTitle:p.title, type:p.type, date:new Date().toISOString(), premium:premi, premiumPeriod:'Per tahun', buyer:user.email, status:'Belum Lunas' };
       sessionStorage.setItem('pendingOrder', JSON.stringify(pending));
       routeTo('checkout');
       return;
@@ -462,51 +472,45 @@ function renderBuy(id){
     return;
   }
 
-  // LIFE
-if(p.type === 'life'){
-  app.innerHTML = `
-    <section class="card" style="max-width:760px;margin:0 auto">
-      <h2>Beli ${escapeHtml(p.title)}</h2>
-      <div class="small">${escapeHtml(p.short)}</div><hr>
-      <div class="field"><label>Nama lengkap (KTP)</label><input id="li_name" class="input" value="${escapeHtml(user.name)}"></div>
-      <div class="field"><label>Tanggal lahir</label><input id="li_dob" type="date" class="input"></div>
-      <div class="field"><label>Besaran pertanggungan</label>
-        <select id="li_sum" class="input">
-          <option value="1000000000">Rp1.000.000.000</option>
-          <option value="2000000000">Rp2.000.000.000</option>
-          <option value="3500000000">Rp3.500.000.000</option>
-          <option value="5000000000">Rp5.000.000.000</option>
-          <option value="10000000000">Rp10.000.000.000</option>
-        </select>
-      </div>
-      <div style="display:flex;gap:8px;margin-top:12px">
-        <button class="btn btn-ghost" onclick="routeTo('detail','${p.id}')">Batal</button>
-        <button id="li_calc" class="btn btn-primary">Hitung Premi</button>
-      </div>
-      <div id="li_result" style="margin-top:12px"></div>
-    </section>
-  `;
-  document.getElementById('li_calc').addEventListener('click', ()=>{
-    const name = $('li_name').value.trim();
-    const dob = $('li_dob').value;
-    const t = Number($('li_sum').value);
-    if(!name||!dob){ showToast('Lengkapi semua field'); return; }
-    const u = calcAge(dob);
-    let m = 0.002;
-    if(u <= 30) m = 0.002;
-    else if(u <= 50) m = 0.004;
-    else m = 0.01;
-    const premiPerMonth = Math.round(m * t);
+  /* LIFE - product is fixed per item (no select) */
+  if(p.type === 'life'){
+    app.innerHTML = `
+      <section class="card" style="max-width:760px;margin:0 auto">
+        <h2>Beli ${escapeHtml(p.title)}</h2>
+        <div class="small">${escapeHtml(p.short)}</div><hr>
+        <div class="field"><label>Nama lengkap (KTP)</label><input id="li_name" class="input" value="${escapeHtml(user.name)}"></div>
+        <div class="field"><label>Tanggal lahir</label><input id="li_dob" type="date" class="input"></div>
+        <div class="field"><label>Nilai pertanggungan</label>
+          <div class="small">${formatIDR(p.price)}</div>
+        </div>
+        <div style="display:flex;gap:8px;margin-top:12px">
+          <button class="btn btn-ghost" onclick="routeTo('detail','${p.id}')">Batal</button>
+          <button id="li_calc" class="btn btn-primary">Hitung Premi</button>
+        </div>
+        <div id="li_result" style="margin-top:12px"></div>
+      </section>
+    `;
+    document.getElementById('li_calc').addEventListener('click', ()=>{
+      const name = $('li_name').value.trim();
+      const dob = $('li_dob').value;
+      if(!name||!dob){ showToast('Lengkapi semua field'); return; }
+      const u = calcAge(dob);
+      // faktor m untuk premi jiwa (per bulan)
+      let m = 0.002;
+      if(u <= 30) m = 0.002;
+      else if(u <= 50) m = 0.004;
+      else m = 0.01;
+      const premiPerMonth = Math.round(m * p.price);
 
-    const pending = { id:'ORD'+Date.now(), productId:p.id, productTitle:p.title, type:p.type, date:new Date().toISOString(), premium:premiPerMonth, premiumPeriod:'Per bulan', buyer:user.email, status:'Belum Lunas' };
-    sessionStorage.setItem('pendingOrder', JSON.stringify(pending));
-    routeTo('checkout');
+      const pending = { id:'ORD'+Date.now(), productId:p.id, productTitle:p.title, type:p.type, date:new Date().toISOString(), premium:premiPerMonth, premiumPeriod:'Per bulan', buyer:user.email, status:'Belum Lunas' };
+      sessionStorage.setItem('pendingOrder', JSON.stringify(pending));
+      routeTo('checkout');
+      return;
+    });
     return;
-  });
-  return;
-}
+  }
 
-  // ACCIDENT
+  /* ACCIDENT */
   if(p.type === 'accident'){
     app.innerHTML = `
       <section class="card" style="max-width:760px;margin:0 auto">
@@ -532,7 +536,7 @@ if(p.type === 'life'){
       else rate = 0.01;
       const premi = Math.round(rate * sum);
 
-      const pending = { id:'ORD'+Date.now(), productId:p.id, productTitle:p.title, type:p.type, date:new Date().toISOString(), premium:premi, buyer:user.email, status:'Belum Lunas' };
+      const pending = { id:'ORD'+Date.now(), productId:p.id, productTitle:p.title, type:p.type, date:new Date().toISOString(), premium:premi, premiumPeriod:'Per tahun', buyer:user.email, status:'Belum Lunas' };
       sessionStorage.setItem('pendingOrder', JSON.stringify(pending));
       routeTo('checkout');
       return;
@@ -540,7 +544,7 @@ if(p.type === 'life'){
     return;
   }
 
-  // TRAVEL
+  /* TRAVEL */
   if(p.type === 'travel'){
     app.innerHTML = `
       <section class="card" style="max-width:760px;margin:0 auto">
@@ -562,7 +566,7 @@ if(p.type === 'life'){
       if(isNaN(cost) || cost < 0){ showToast('Biaya perjalanan harus angka >= 0'); return; }
       const premi = Math.round(days * 10000 + 0.001 * cost);
 
-      const pending = { id:'ORD'+Date.now(), productId:p.id, productTitle:p.title + ' - ' + $('t_dest').value, type:p.type, date:new Date().toISOString(), premium:premi, buyer:user.email, status:'Belum Lunas' };
+      const pending = { id:'ORD'+Date.now(), productId:p.id, productTitle:p.title + ' - ' + $('t_dest').value, type:p.type, date:new Date().toISOString(), premium:premi, premiumPeriod:'Per tahun', buyer:user.email, status:'Belum Lunas' };
       sessionStorage.setItem('pendingOrder', JSON.stringify(pending));
       routeTo('checkout');
       return;
@@ -570,7 +574,7 @@ if(p.type === 'life'){
     return;
   }
 
-  // PROPERTY
+  /* PROPERTY */
   if(p.type === 'property'){
     app.innerHTML = `
       <section class="card" style="max-width:760px;margin:0 auto">
@@ -595,7 +599,7 @@ if(p.type === 'life'){
       let rate = (age <=10)?0.0015:0.0025;
       const premi = Math.round(rate * sum);
 
-      const pending = { id:'ORD'+Date.now(), productId:p.id, productTitle:p.title, type:p.type, date:new Date().toISOString(), premium:premi, buyer:user.email, status:'Belum Lunas' };
+      const pending = { id:'ORD'+Date.now(), productId:p.id, productTitle:p.title, type:p.type, date:new Date().toISOString(), premium:premi, premiumPeriod:'Per tahun', buyer:user.email, status:'Belum Lunas' };
       sessionStorage.setItem('pendingOrder', JSON.stringify(pending));
       routeTo('checkout');
       return;
@@ -603,7 +607,7 @@ if(p.type === 'life'){
     return;
   }
 
-  // BUSINESS
+  /* BUSINESS */
   if(p.type === 'business'){
     app.innerHTML = `
       <section class="card" style="max-width:760px;margin:0 auto">
@@ -626,7 +630,7 @@ if(p.type === 'life'){
       if(isNaN(turn) || isNaN(asset)){ showToast('Omzet dan aset harus angka'); return; }
       const premi = Math.round(0.002 * asset + 0.0005 * turn);
 
-      const pending = { id:'ORD'+Date.now(), productId:p.id, productTitle:p.title, type:p.type, date:new Date().toISOString(), premium:premi, buyer:user.email, status:'Belum Lunas' };
+      const pending = { id:'ORD'+Date.now(), productId:p.id, productTitle:p.title, type:p.type, date:new Date().toISOString(), premium:premi, premiumPeriod:'Per tahun', buyer:user.email, status:'Belum Lunas' };
       sessionStorage.setItem('pendingOrder', JSON.stringify(pending));
       routeTo('checkout');
       return;
@@ -634,7 +638,7 @@ if(p.type === 'life'){
     return;
   }
 
-  // fallback generic buy
+  /* fallback generic buy */
   app.innerHTML = `
     <section class="card" style="max-width:560px;margin:0 auto">
       <h2>Beli ${escapeHtml(p.title)}</h2>
@@ -667,13 +671,13 @@ function renderCheckout(){
   const order = JSON.parse(pending);
   const user = getCurrent();
   if(!user){ showToast('Silakan login'); return routeTo('login'); }
-  document.title = "Poly Insurance's";
+  document.title = "Checkout — Poly Insurance";
   app.innerHTML = `
     <section class="card" style="max-width:760px;margin:0 auto">
       <h2>Checkout</h2>
       <div class="small">Produk: <strong>${escapeHtml(order.productTitle)}</strong></div>
       <div class="small">Tipe: ${escapeHtml(order.type || '')}</div>
-      <div class="small">Jumlah yang harus dibayar: <strong>${formatIDR(order.premium||0)}</strong></div>
+      <div class="small">Jumlah yang harus dibayar: <strong>${formatIDR(order.premium||0)}</strong> ${order.premiumPeriod?`<span class="muted">(${order.premiumPeriod})</span>`:''}</div>
       <hr>
       <div class="field"><label>Pilih Metode Pembayaran</label>
         <select id="pay_method" class="input">
@@ -706,7 +710,7 @@ function renderHistory(){
   const user = getCurrent();
   if(!user){ showToast('Silakan login'); return routeTo('login'); }
   const orders = getOrders().filter(o => o.buyer === user.email);
-  document.title = "Poly Insurance's";
+  document.title = "Histori Pembelian — Poly Insurance";
 
   if(orders.length === 0){
     app.innerHTML = `
@@ -719,10 +723,9 @@ function renderHistory(){
     return;
   }
 
-  // build table rows
   const rows = orders.map(o => {
     const dateStr = new Date(o.date).toLocaleString();
-    const price = formatIDR(o.premium || 0);
+    const price = formatIDR(o.premium || 0) + (o.premiumPeriod?(' / '+o.premiumPeriod):'');
     const status = escapeHtml(o.status || 'Belum Lunas');
     const type = escapeHtml(o.type || '');
     const title = escapeHtml(o.productTitle || o.productName || '');
@@ -762,7 +765,7 @@ function renderHistory(){
 
 /* Auth views */
 function renderLogin(){
-  document.title = "Poly Insurance's";
+  document.title = "Login — Poly Insurance";
   app.innerHTML = `
     <section class="card" style="max-width:420px;margin:0 auto">
       <h2>Login</h2>
@@ -787,7 +790,7 @@ function doLogin(){
 }
 
 function renderSignup(){
-  document.title = "Poly Insurance's";
+  document.title = "Sign Up — Poly Insurance";
   app.innerHTML = `
     <section class="card" style="max-width:560px;margin:0 auto">
       <h2>Daftar Akun</h2>
